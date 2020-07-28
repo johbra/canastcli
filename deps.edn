@@ -3,7 +3,7 @@
         reagent {:mvn/version "1.0.0-alpha2"}
         cljs-http {:mvn/version "0.1.46"}        }
  :paths ["src" "resources" "test" "target"]
- :aliases {:dev {:extra-paths ["resources" "target"]
+ :aliases {:fig {:extra-paths ["resources" "target"]
                  :extra-deps {com.bhauman/figwheel-main {:mvn/version "0.2.11"}}}}
                                         ;:externs ["externs.js"]
  }
