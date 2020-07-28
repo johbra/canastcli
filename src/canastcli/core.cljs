@@ -55,7 +55,7 @@
 
 (defn geber-feststellung
   []
-  (let [pos (str (* 52 (:runde (:spiel @world))) "px")]
+  (let [pos (str (min (* 52 (:runde (:spiel @world))) 450) "px")]
     (when (not (sp/spiel-beendet? (:spiel @world)))
       (if (sp/geber-festgelegt? (:spiel @world))
         [:div {:class "nebentab" :style {:top pos}}
@@ -210,7 +210,7 @@
   (let [runden (if (:korrektur @world)
                  (sp/anzahl-runden (:spiel @world))
                  (inc (sp/anzahl-runden (:spiel @world))))]
-    [:div.rTableBody
+    [:div {:class "rTableBody" :style {:height "450px"}}
      (doall (map
              (fn [r]
                (runden-stand r))
