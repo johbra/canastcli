@@ -1,0 +1,7 @@
+^{:watch-dirs ["src"]
+  :css-dirs ["resources/public/css"]}
+{:main canastcli.core
+ :optimizations :none
+ :pretty-print true
+ :source-map true
+ :asset-path "/cljs-out/dev"}
