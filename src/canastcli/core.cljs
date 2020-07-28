@@ -47,7 +47,7 @@
   [:div
    [:div.gwspiele "Gewonnene Spiele bisher: "]
    [:div.table 
-    [:div.tr
+    [:div.tr 
      [:div.td (key (first historie))]
      [:div.td (key (second historie))]]
     [:div.tr
