@@ -8,10 +8,10 @@ reagent.impl.input.these_inputs_have_selection_api = new cljs.core.PersistentHas
 reagent.impl.input.has_selection_api_QMARK_ = (function reagent$impl$input$has_selection_api_QMARK_(input_type){
 return cljs.core.contains_QMARK_.call(null,reagent.impl.input.these_inputs_have_selection_api,input_type);
 });
-reagent.impl.input.input_node_set_value = (function reagent$impl$input$input_node_set_value(node,rendered_value,dom_value,component,p__14772){
-var map__14773 = p__14772;
-var map__14773__$1 = (((((!((map__14773 == null))))?(((((map__14773.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__14773.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__14773):map__14773);
-var on_write = cljs.core.get.call(null,map__14773__$1,new cljs.core.Keyword(null,"on-write","on-write",31519475));
+reagent.impl.input.input_node_set_value = (function reagent$impl$input$input_node_set_value(node,rendered_value,dom_value,component,p__13698){
+var map__13699 = p__13698;
+var map__13699__$1 = (((((!((map__13699 == null))))?(((((map__13699.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__13699.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__13699):map__13699);
+var on_write = cljs.core.get.call(null,map__13699__$1,new cljs.core.Keyword(null,"on-write","on-write",31519475));
 if((!((((node === document.activeElement)) && (reagent.impl.input.has_selection_api_QMARK_.call(null,node.type)) && (typeof rendered_value === 'string') && (typeof dom_value === 'string'))))){
 (component.cljsDOMValue = rendered_value);
 
@@ -114,8 +114,8 @@ delete jsprops["value"];
 
 (jsprops.defaultValue = value);
 
-(jsprops.onChange = (function (p1__14775_SHARP_){
-return reagent.impl.input.input_handle_change.call(null,this$,on_change,p1__14775_SHARP_);
+(jsprops.onChange = (function (p1__13701_SHARP_){
+return reagent.impl.input.input_handle_change.call(null,this$,on_change,p1__13701_SHARP_);
 }));
 
 return (jsprops.ref = this$.reagentRefFn);
@@ -127,8 +127,8 @@ reagent.impl.input.input_unmount = (function reagent$impl$input$input_unmount(th
 return (this$.cljsInputLive = null);
 });
 reagent.impl.input.input_component_QMARK_ = (function reagent$impl$input$input_component_QMARK_(x){
-var G__14776 = x;
-switch (G__14776) {
+var G__13702 = x;
+switch (G__13702) {
 case "input":
 case "textarea":
 return true;

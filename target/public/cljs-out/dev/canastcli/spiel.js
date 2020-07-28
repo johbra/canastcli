@@ -28,8 +28,8 @@ canastcli.spiel.teilnehmer_vorhanden_QMARK_ = (function canastcli$spiel$teilnehm
 return (!(cljs.core.empty_QMARK_.call(null,new cljs.core.Keyword(null,"teilnehmer","teilnehmer",-1866934245).cljs$core$IFn$_invoke$arity$1(spiel))));
 });
 canastcli.spiel.spieler_mit_namen = (function canastcli$spiel$spieler_mit_namen(name,spiel){
-return cljs.core.first.call(null,cljs.core.filter.call(null,(function (p1__21474_SHARP_){
-return cljs.core._EQ_.call(null,name,new cljs.core.Keyword(null,"spieler-name","spieler-name",-1325659791).cljs$core$IFn$_invoke$arity$1(p1__21474_SHARP_));
+return cljs.core.first.call(null,cljs.core.filter.call(null,(function (p1__13236_SHARP_){
+return cljs.core._EQ_.call(null,name,new cljs.core.Keyword(null,"spieler-name","spieler-name",-1325659791).cljs$core$IFn$_invoke$arity$1(p1__13236_SHARP_));
 }),new cljs.core.Keyword(null,"teilnehmer","teilnehmer",-1866934245).cljs$core$IFn$_invoke$arity$1(spiel)));
 });
 canastcli.spiel.anzahl_runden = (function canastcli$spiel$anzahl_runden(spiel){
@@ -51,25 +51,25 @@ canastcli.spiel.restauriere_spiel = (function canastcli$spiel$restauriere_spiel(
 return cljs.core.println.call(null,"restauriere-spiel");
 });
 canastcli.spiel.registriere = (function canastcli$spiel$registriere(spiel,resultate){
-var teiln = cljs.core.map.call(null,(function (p__21476){
-var vec__21477 = p__21476;
-var name = cljs.core.nth.call(null,vec__21477,(0),null);
-var res = cljs.core.nth.call(null,vec__21477,(1),null);
+var teiln = cljs.core.map.call(null,(function (p__13238){
+var vec__13239 = p__13238;
+var name = cljs.core.nth.call(null,vec__13239,(0),null);
+var res = cljs.core.nth.call(null,vec__13239,(1),null);
 return canastcli.spieler.registriere.call(null,canastcli.spiel.spieler_mit_namen.call(null,name,spiel),res);
 }),resultate);
 var runde = (new cljs.core.Keyword(null,"runde","runde",-1618531444).cljs$core$IFn$_invoke$arity$1(spiel) + (1));
 var sieger = cljs.core.last.call(null,cljs.core.sort_by.call(null,new cljs.core.Keyword(null,"summe","summe",-650249817),teiln));
-var geber = cljs.core.first.call(null,cljs.core.filter.call(null,(function (p1__21475_SHARP_){
-return (!(cljs.core._EQ_.call(null,p1__21475_SHARP_,new cljs.core.Keyword(null,"geber","geber",604746862).cljs$core$IFn$_invoke$arity$1(spiel))));
+var geber = cljs.core.first.call(null,cljs.core.filter.call(null,(function (p1__13237_SHARP_){
+return (!(cljs.core._EQ_.call(null,p1__13237_SHARP_,new cljs.core.Keyword(null,"geber","geber",604746862).cljs$core$IFn$_invoke$arity$1(spiel))));
 }),canastcli.spiel.teilnehmer_namen.call(null,spiel)));
 var s = cljs.core.assoc.call(null,spiel,new cljs.core.Keyword(null,"runde","runde",-1618531444),runde);
 return cljs.core.assoc.call(null,s,new cljs.core.Keyword(null,"teilnehmer","teilnehmer",-1866934245),teiln,new cljs.core.Keyword(null,"spiel-beendet?","spiel-beendet?",-1758455863),(new cljs.core.Keyword(null,"summe","summe",-650249817).cljs$core$IFn$_invoke$arity$1(sieger) >= (5000)),new cljs.core.Keyword(null,"sieger","sieger",-247971207),(((new cljs.core.Keyword(null,"summe","summe",-650249817).cljs$core$IFn$_invoke$arity$1(sieger) >= (5000)))?new cljs.core.Keyword(null,"spieler-name","spieler-name",-1325659791).cljs$core$IFn$_invoke$arity$1(sieger):null),new cljs.core.Keyword(null,"geber","geber",604746862),geber);
 });
 canastcli.spiel.korrigiere = (function canastcli$spiel$korrigiere(spiel,resultate){
-var teiln = cljs.core.map.call(null,(function (p__21480){
-var vec__21481 = p__21480;
-var name = cljs.core.nth.call(null,vec__21481,(0),null);
-var res = cljs.core.nth.call(null,vec__21481,(1),null);
+var teiln = cljs.core.map.call(null,(function (p__13242){
+var vec__13243 = p__13242;
+var name = cljs.core.nth.call(null,vec__13243,(0),null);
+var res = cljs.core.nth.call(null,vec__13243,(1),null);
 return canastcli.spieler.korrigiere.call(null,canastcli.spiel.spieler_mit_namen.call(null,name,spiel),res);
 }),resultate);
 var sieger = cljs.core.last.call(null,cljs.core.sort_by.call(null,new cljs.core.Keyword(null,"summe","summe",-650249817),teiln));
