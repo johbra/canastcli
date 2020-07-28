@@ -4,4 +4,4 @@
  :optimizations :none
  :pretty-print true
  :source-map true
- :asset-path "/cljs-out/dev"}
+ :asset-path "cljs-out/dev"}
