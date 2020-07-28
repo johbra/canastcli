@@ -38,7 +38,7 @@
            :spiel spiel
            :korrektur false)))
 
-(defn restauriere-spiel []
+(defn restauriere-spiel [] 
   (df/lies-welt "welt.txt" world))
 
 
