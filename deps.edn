@@ -5,6 +5,7 @@
         com.bhauman/figwheel-main {:mvn/version "0.2.11"}}
  :paths ["src" "resources" "test" "target"]
  :aliases {:fig {:extra-paths ["resources" "target"]
-                 :extra-deps {com.bhauman/figwheel-main {:mvn/version "0.2.11"}}}}
- 
- }
+                 :extra-deps {com.bhauman/figwheel-main {:mvn/version "0.2.11"}}}
+           :build {:main-opts ["-m" "figwheel.main" "-b" "dev" "-r"]}
+           :min   {:main-opts ["-m" "figwheel.main" "-O" "advanced" "-bo" "dev"]}
+           :test  {:main-opts ["-m" "figwheel.main" "-co" "test.cljs.edn" "-m" dep.test-runner]}}}

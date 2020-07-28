@@ -41,7 +41,6 @@
 (defn restauriere-spiel []
   (df/lies-welt "welt.txt" world))
 
-
 (defn gewonnene-spiele
   [historie] 
   [:div
