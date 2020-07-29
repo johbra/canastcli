@@ -33,17 +33,20 @@ h1 {float: left; font-size: 2em;  margin-block-start: 0.67em;
 .rTableHeading, .rTableBody, .rTableFoot, .rTableRow{ clear: both; } 
 .rTableBody {height: 380px; overflow-y: scroll;}
 .rTableHead, .rTableFoot{  background-color: #DDD;   	font-weight: bold; } 
-.rTableCell, .rTableHead {border: 0px solid #999999;float: left;height: 25px;overflow: hidden; margin-left: 3px ; width: 15%;} 
+.rTableCell, .rTableHead {border: 0px solid #999999;float: left;height: 25px;
+                          overflow: hidden; margin-left: 3px ; width: 15%;} 
 .rTableCell, .rTableHead {text-align: right;}
 .rTableCell.rule {height: 2px;}
 .rTableCell.smal, .rTableHead.smal, rTableCell.rule.smal{ width: 8% }
-.rTableCell.button {text-align: center;padding: initial;font-size: 70%;
-                    background-color: gray; border:none}
-.rTable:after {visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+.rTable:after {visibility: hidden; display: block; font-size: 0; content: " ";
+               clear: both; height: 0; }
 
 ul#menu{width:132px;margin:0px;padding:0px;}
-ul#menu li{width:132px;list-style:none;position:relative;float:left;border-top:1px solid #999999;border-bottom:1px solid #999999;margin-bottom:-1px;}
-ul#menu ul.submenu{position:absolute;left:92px;top:-1px;width:132px;width:132px;display:none;}
+ul#menu li{width:132px;list-style:none;position:relative;float:left;
+           border-top:1px solid #999999;border-bottom:1px solid #999999;
+           margin-bottom:-1px;}
+ul#menu ul.submenu{position:absolute;left:92px;top:-1px;width:132px;width:132px;
+                   display:none;}
 ul#menu ul.submenu li{border-left:1px solid #999999;border-right:1px solid #999999;}
 ul#menu li:hover ul.submenu{display:block;text-align:left;}
 ul#menu li.mainlast{border-bottom:1px solid #999999;}
@@ -57,16 +60,10 @@ ul#menu ul.submenu li a:hover{color:#FFFFFF;background-color:#115CAD;}
 
 div.navi{float:left; margin-right:25px;}
 
-.mybutton {
-    color: red;
-    font-size: 15px;
-    border: none;	
-    background: none;}
-
 div.table { float: left; width: 100px;
             display: table; 
             border-collapse:collapse; 
-}
+          }
 div.tr { 
     display:table-row; 
 }
@@ -76,3 +73,14 @@ div.td {
     padding:5px; 
 }
 
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
