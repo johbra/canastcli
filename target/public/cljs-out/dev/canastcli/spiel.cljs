@@ -1,6 +1,6 @@
 (ns canastcli.spiel
   (:require [canastcli.spieler :as s]
-            [canastcli.drop-file-stream :as df]))
+            ))
 
 ;; Konstruktoren
 
@@ -81,8 +81,7 @@
 (defn korrigiere
   [spiel resultate] 
   (let [teiln (map (fn [[name res]] (s/korrigiere (spieler-mit-namen name spiel) res)) resultate) 
-        sieger (last (sort-by :summe teiln))]
-    (println "sieger: " sieger)
+        sieger (last (sort-by :summe teiln))] 
     (assoc spiel
            :teilnehmer teiln
            :spiel-beendet? (>= (:summe sieger) 5000)

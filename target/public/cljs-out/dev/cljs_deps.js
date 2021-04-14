@@ -172,7 +172,7 @@ goog.addDependency("../cljs_http/core.js", ['cljs_http.core'], ['goog.net.Jsonp'
 goog.addDependency("../cljs_http/client.js", ['cljs_http.client'], ['cljs_http.core', 'no.en.core', 'goog.Uri', 'cljs.core', 'cljs_http.util', 'cljs.core.async', 'clojure.string', 'cljs.reader']);
 goog.addDependency("../canastcli/drop_file_stream.js", ['canastcli.drop_file_stream'], ['cljs.core', 'cljs_http.client', 'cljs.core.async']);
 goog.addDependency("../canastcli/spieler.js", ['canastcli.spieler'], ['cljs.core']);
-goog.addDependency("../canastcli/spiel.js", ['canastcli.spiel'], ['canastcli.drop_file_stream', 'cljs.core', 'canastcli.spieler']);
+goog.addDependency("../canastcli/spiel.js", ['canastcli.spiel'], ['cljs.core', 'canastcli.spieler']);
 goog.addDependency("../reagent/debug.js", ['reagent.debug'], ['cljs.core']);
 goog.addDependency("../reagent/impl/util.js", ['reagent.impl.util'], ['cljs.core', 'goog.object', 'reagent.debug', 'clojure.string', 'clojure.walk']);
 goog.addDependency("../reagent/impl/protocols.js", ['reagent.impl.protocols'], ['cljs.core']);

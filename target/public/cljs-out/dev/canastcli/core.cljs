@@ -7,7 +7,8 @@
             [cljs.core.async :as a :refer [<! >!]]
             [canastcli.spiel :as sp]
             [canastcli.menu :as me]
-            [canastcli.drop-file-stream :as df]))
+            [canastcli.drop-file-stream :as df]
+            ))
 
 ;; State
 (def world (r/atom {:spiel (sp/->Spiel)
@@ -72,7 +73,7 @@
 
 (defn incr-gw-spiele
   [hist sieger]
-  (assoc hist sieger (inc (hist sieger ))))
+  (assoc hist sieger (inc (hist sieger))))
 
 (defn decr-gw-spiele
   [hist sieger] 
@@ -85,12 +86,13 @@
     (:historie @world)))
 
 (defn sieger-anzeige
-  []
+  [] 
   (let [l (str
            (:log @world)
            "Spiel beendet: SiegerIn ist " (sp/sieger (:spiel @world)))
+        w (df/delete-file-named "welt.txt" world :gespeichertes-spiel?) 
         f (df/write-text l "logs.txt")
-        w (df/delete-file-named "welt.txt" world :gespeichertes-spiel?)] 
+        h (df/write-text (pr-str (:historie @world)) "hist.txt")]
     [:div.gewinner (str "Gewonnen hat: " (sp/sieger (:spiel @world)))]))
 
 (def resultate (r/atom (zipmap (sp/teilnehmer-namen (:spiel @world))
@@ -107,50 +109,50 @@
    \newline))
 
 (defn naechste-runde
-  []
+  [] 
   (let [x 1] 
     (if (not (sp/spiel-beendet? (:spiel @world)))
-      [:div.rTableRow {:key (if (:korrektur @world)
-                              (dec (sp/runde (:spiel @world)))
-                              (sp/runde (:spiel @world)))}
-       [:div.rTableCell.smal (inc (sp/runde (:spiel @world)))]
-       (doall
-        (map 
-         (fn
-           [tln]
+      (do (df/write-text (prn-str @world) "welt.txt")
+          [:div.rTableRow {:key (if (:korrektur @world)
+                                  (dec (sp/runde (:spiel @world)))
+                                  (sp/runde (:spiel @world)))}
+           [:div.rTableCell.smal (inc (sp/runde (:spiel @world)))]
+           (doall
+            (map 
+             (fn
+               [tln]
+               [:div.rTableCell
+                {:key tln}
+                [:input {:default-value (if (:korrektur @world)
+                                          (sp/letztes-resultat
+                                           (:spiel @world) tln) "")
+                         :placeholder (if (:korrektur @world)
+                                        (sp/letztes-resultat
+                                         (:spiel @world) tln) "")
+                         :type "number" 
+                         :on-change #(let [val (cljs.reader/read-string
+                                                (-> % .-target .-value))
+                                           res (swap! resultate assoc tln val )]
+                                       )}]])
+             (sp/teilnehmer-namen (:spiel @world))))
            [:div.rTableCell
-            {:key tln}
-            [:input {:default-value (if (:korrektur @world)
-                                      (sp/letztes-resultat
-                                       (:spiel @world) tln) "")
-                     :placeholder (if (:korrektur @world)
-                                    (sp/letztes-resultat
-                                     (:spiel @world) tln) "")
-                     :type "number" 
-                     :on-change #(let [val (cljs.reader/read-string
-                                            (-> % .-target .-value))
-                                       res (swap! resultate assoc tln val )]
-                                   )}]])
-         (sp/teilnehmer-namen (:spiel @world))))
-       [:div.rTableCell
-        [:button.button
-         {:on-click #(let [spiel
-                           (if (:korrektur @world)
-                             (sp/korrigiere (:spiel @world) @resultate)
-                             (sp/registriere (:spiel @world) @resultate))
-                           historie (aktualisiere-historie spiel)
-                           h (df/write-text (pr-str historie) "hist.txt")
-                           l (log-runde @world @resultate)
-                           f (df/write-text l "logs.txt")
-                           w (swap! world assoc
-                                    :spiel spiel
-                                    :korrektur false
-                                    :historie historie
-                                    :log l
-                                    :gespeichertes-spiel? true)
-                           s (df/write-text (prn-str w) "welt.txt")] 
-                       w)}
-         "speichern"]]] 
+            [:button.button
+             {:on-click #(let [spiel
+                               (if (:korrektur @world)
+                                 (sp/korrigiere (:spiel @world) @resultate)
+                                 (sp/registriere (:spiel @world) @resultate))
+                               historie (aktualisiere-historie spiel)
+                               l (log-runde @world @resultate)
+                               f (df/write-text l "logs.txt")
+                               w (swap! world assoc
+                                        :spiel spiel
+                                        :korrektur false
+                                        :historie historie
+                                        :log l
+                                        :gespeichertes-spiel?
+                                        (not (:spiel-beendet? spiel)))] 
+                           w)}
+             "speichern"]]]) 
       (sieger-anzeige))))
 
 (defn log-korrektur-gewonnener-spiele
