@@ -62,26 +62,20 @@
 
 (defn write-text
   [text f-name] 
-  (go-loop [pfad (str "{\"path\":\"/" f-name \" "," "\"mode\":{\".tag\":\"overwrite\"}}")
-            r (<! (http/post "https://content.dropboxapi.com/2/files/upload" 
-                             {:with-credentials? false
-                              :headers {"Authorization" "Bearer QfCCKhxI-HwAAAAAAAAGe4i9DNbnHKnffOh6gCeyFIKFvRqMbS7IW1JQzyb8XVNp"
-                                        "Dropbox-API-Arg" pfad 
-                                        "Content-Type" "application/octet-stream"
-                                        }        
-                              :body text} 
-                             ))] 
-    (when (= (:status r) 429)
-      (do 
-        (<! (timeout (* (:retry_after (:error (:body r))) 1000)))
-        (recur pfad (<! (http/post "https://content.dropboxapi.com/2/files/upload" 
-                                   {:with-credentials? false
-                                    :headers {"Authorization" "Bearer QfCCKhxI-HwAAAAAAAAGe4i9DNbnHKnffOh6gCeyFIKFvRqMbS7IW1JQzyb8XVNp"
-                                              "Dropbox-API-Arg" pfad 
-                                              "Content-Type" "application/octet-stream"
-                                              }        
-                                    :body text} 
-                                   )))))))
+  (go-loop []
+    (let [pfad (str "{\"path\":\"/" f-name \" "," "\"mode\":{\".tag\":\"overwrite\"}}")
+          r (<! (http/post "https://content.dropboxapi.com/2/files/upload" 
+                           {:with-credentials? false
+                            :headers {"Authorization" "Bearer QfCCKhxI-HwAAAAAAAAGe4i9DNbnHKnffOh6gCeyFIKFvRqMbS7IW1JQzyb8XVNp"
+                                      "Dropbox-API-Arg" pfad 
+                                      "Content-Type" "application/octet-stream"
+                                      }        
+                            :body text} 
+                           ))] 
+      (when (= (:status r) 429)
+        (do 
+          (<! (timeout (* (:retry_after (:error (:body r))) 1000)))
+          (recur))))))
 
 (defn log-neues-spiel
   [f-name w ziel]
@@ -91,7 +85,7 @@
                                      :headers {"Authorization" "Bearer QfCCKhxI-HwAAAAAAAAGe4i9DNbnHKnffOh6gCeyFIKFvRqMbS7IW1JQzyb8XVNp"
                                                "Dropbox-API-Arg" pfad
                                                "Content-Type" "text/plain; charset=utf-8"}         
-                   }
-          ))] 
-  (swap! w assoc ziel (str (:body response) "Neues Spiel " (js/Date.) \newline))
-  (write-text (ziel @w) "logs.txt"))))
+                                     }
+                                    ))] 
+        (swap! w assoc ziel (str (:body response) "Neues Spiel " (js/Date.) \newline))
+        (write-text (ziel @w) "logs.txt"))))

@@ -18,8 +18,8 @@ cljs.tools.reader.impl.commons.read_past = (function cljs$tools$reader$impl$comm
 var ch = cljs.tools.reader.reader_types.read_char.call(null,rdr);
 while(true){
 if(pred.call(null,ch)){
-var G__8527 = cljs.tools.reader.reader_types.read_char.call(null,rdr);
-ch = G__8527;
+var G__14701 = cljs.tools.reader.reader_types.read_char.call(null,rdr);
+ch = G__14701;
 continue;
 } else {
 return ch;
@@ -82,8 +82,8 @@ return parseFloat(s);
 }
 });
 cljs.tools.reader.impl.commons.matches_QMARK_ = (function cljs$tools$reader$impl$commons$matches_QMARK_(pattern,s){
-var vec__8528 = cljs.core.re_find.call(null,pattern,s);
-var match = cljs.core.nth.call(null,vec__8528,(0),null);
+var vec__14702 = cljs.core.re_find.call(null,pattern,s);
+var match = cljs.core.nth.call(null,vec__14702,(0),null);
 return (match === s);
 });
 cljs.tools.reader.impl.commons.match_number = (function cljs$tools$reader$impl$commons$match_number(s){
@@ -133,14 +133,14 @@ return null;
 });
 cljs.tools.reader.impl.commons.read_comment = (function cljs$tools$reader$impl$commons$read_comment(var_args){
 var args__4742__auto__ = [];
-var len__4736__auto___8533 = arguments.length;
-var i__4737__auto___8534 = (0);
+var len__4736__auto___14707 = arguments.length;
+var i__4737__auto___14708 = (0);
 while(true){
-if((i__4737__auto___8534 < len__4736__auto___8533)){
-args__4742__auto__.push((arguments[i__4737__auto___8534]));
+if((i__4737__auto___14708 < len__4736__auto___14707)){
+args__4742__auto__.push((arguments[i__4737__auto___14708]));
 
-var G__8535 = (i__4737__auto___8534 + (1));
-i__4737__auto___8534 = G__8535;
+var G__14709 = (i__4737__auto___14708 + (1));
+i__4737__auto___14708 = G__14709;
 continue;
 } else {
 }
@@ -158,34 +158,34 @@ return cljs.tools.reader.impl.commons.skip_line.call(null,rdr);
 (cljs.tools.reader.impl.commons.read_comment.cljs$lang$maxFixedArity = (1));
 
 /** @this {Function} */
-(cljs.tools.reader.impl.commons.read_comment.cljs$lang$applyTo = (function (seq8531){
-var G__8532 = cljs.core.first.call(null,seq8531);
-var seq8531__$1 = cljs.core.next.call(null,seq8531);
+(cljs.tools.reader.impl.commons.read_comment.cljs$lang$applyTo = (function (seq14705){
+var G__14706 = cljs.core.first.call(null,seq14705);
+var seq14705__$1 = cljs.core.next.call(null,seq14705);
 var self__4723__auto__ = this;
-return self__4723__auto__.cljs$core$IFn$_invoke$arity$variadic(G__8532,seq8531__$1);
+return self__4723__auto__.cljs$core$IFn$_invoke$arity$variadic(G__14706,seq14705__$1);
 }));
 
 cljs.tools.reader.impl.commons.throwing_reader = (function cljs$tools$reader$impl$commons$throwing_reader(msg){
 return (function() { 
-var G__8536__delegate = function (rdr,_){
+var G__14710__delegate = function (rdr,_){
 return cljs.tools.reader.impl.errors.reader_error.call(null,rdr,msg);
 };
-var G__8536 = function (rdr,var_args){
+var G__14710 = function (rdr,var_args){
 var _ = null;
 if (arguments.length > 1) {
-var G__8537__i = 0, G__8537__a = new Array(arguments.length -  1);
-while (G__8537__i < G__8537__a.length) {G__8537__a[G__8537__i] = arguments[G__8537__i + 1]; ++G__8537__i;}
-  _ = new cljs.core.IndexedSeq(G__8537__a,0,null);
+var G__14711__i = 0, G__14711__a = new Array(arguments.length -  1);
+while (G__14711__i < G__14711__a.length) {G__14711__a[G__14711__i] = arguments[G__14711__i + 1]; ++G__14711__i;}
+  _ = new cljs.core.IndexedSeq(G__14711__a,0,null);
 } 
-return G__8536__delegate.call(this,rdr,_);};
-G__8536.cljs$lang$maxFixedArity = 1;
-G__8536.cljs$lang$applyTo = (function (arglist__8538){
-var rdr = cljs.core.first(arglist__8538);
-var _ = cljs.core.rest(arglist__8538);
-return G__8536__delegate(rdr,_);
+return G__14710__delegate.call(this,rdr,_);};
+G__14710.cljs$lang$maxFixedArity = 1;
+G__14710.cljs$lang$applyTo = (function (arglist__14712){
+var rdr = cljs.core.first(arglist__14712);
+var _ = cljs.core.rest(arglist__14712);
+return G__14710__delegate(rdr,_);
 });
-G__8536.cljs$core$IFn$_invoke$arity$variadic = G__8536__delegate;
-return G__8536;
+G__14710.cljs$core$IFn$_invoke$arity$variadic = G__14710__delegate;
+return G__14710;
 })()
 ;
 });
