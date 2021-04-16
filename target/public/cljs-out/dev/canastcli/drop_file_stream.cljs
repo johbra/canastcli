@@ -61,7 +61,8 @@
         (reset! w (cljs.reader/read-string (:body response))))))
 
 (defn write-text
-  [text f-name] 
+  [text f-name]
+  #_(js/console.log f-name text)
   (go-loop []
     (let [pfad (str "{\"path\":\"/" f-name \" "," "\"mode\":{\".tag\":\"overwrite\"}}")
           r (<! (http/post "https://content.dropboxapi.com/2/files/upload" 
@@ -71,7 +72,8 @@
                                       "Content-Type" "application/octet-stream"
                                       }        
                             :body text} 
-                           ))] 
+                           ))]
+      (js/console.log (:status r))
       (when (= (:status r) 429)
         (do 
           (<! (timeout (* (:retry_after (:error (:body r))) 1000)))

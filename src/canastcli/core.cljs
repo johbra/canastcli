@@ -90,7 +90,8 @@
   (let [l (str
            (:log @world)
            "Spiel beendet: SiegerIn ist " (sp/sieger (:spiel @world)))
-        w (df/delete-file-named "welt.txt" world :gespeichertes-spiel?) 
+        w (df/delete-file-named "welt.txt" world :gespeichertes-spiel?)
+        ;_ (js/console.log "logs.txt" l)
         f (df/write-text l "logs.txt")
         h (df/write-text (pr-str (:historie @world)) "hist.txt")]
     [:div.gewinner (str "Gewonnen hat: " (sp/sieger (:spiel @world)))]))
@@ -143,7 +144,8 @@
                                  (sp/registriere (:spiel @world) @resultate))
                                historie (aktualisiere-historie spiel)
                                l (log-runde @world @resultate)
-                               f (df/write-text l "logs.txt")
+                               f (when (not (:spiel-beendet? spiel))
+                                   (df/write-text l "logs.txt"))
                                w (swap! world assoc
                                         :spiel spiel
                                         :korrektur false
