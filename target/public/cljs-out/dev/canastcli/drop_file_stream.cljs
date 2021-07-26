@@ -21,8 +21,9 @@
         (<! (http/post "https://api.dropboxapi.com/2/files/delete" 
                        {:with-credentials? false
                         :headers {"Authorization" "Bearer QfCCKhxI-HwAAAAAAAAGe4i9DNbnHKnffOh6gCeyFIKFvRqMbS7IW1JQzyb8XVNp"
-                                  }         
-                        :json-params {:path pfad}}
+                                  }
+                        :format :json
+                        :params {:path pfad}}
                        )))))
 
 (defn get-contents-of
